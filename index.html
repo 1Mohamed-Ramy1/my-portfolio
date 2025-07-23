@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eng/ Mohamed Ramy | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+ <style>
+  body::-webkit-scrollbar {
+    width: 8px;
+  }
+  body::-webkit-scrollbar-thumb {
+    background: gold;
+    border-radius: 10px;
+    box-shadow: 0 0 5px gold;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+  }
+  nav {
+    width: 100%;
+    background: #111;
+    padding: 15px 10%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    color: #00aaff;
+  }
+  nav::before {
+    content: "👨‍💻 Software Engineer";
+    color: #f8d600;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    text-shadow: 0 0 6px gold;
+  }
+  header {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid #ffd700;
+  }
+  header h1 {
+    font-size: 3.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: gold;
+    text-shadow: 0 0 10px gold;
+  }
+  header p {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-top: 10px;
+  }
+  .binary {
+    position: absolute;
+    font-family: monospace;
+    font-size: 14px;
+    color: #00ff00;
+    animation: fall 10s linear infinite;
+    z-index: 0;
+  }
+  @keyframes fall {
+    0% {
+      top: -5%;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+  .robot {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 999;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  section {
+    padding: 80px 10% 60px;
+    position: relative;
+    z-index: 1;
+  }
+  section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    border-left: 5px solid #915eff;
+    padding-left: 15px;
+  }
+  .about p {
+    font-size: 1.3rem;
+    line-height: 2.4rem;
+    margin-bottom: 1.8rem;
+  }
+  .project {
+    background: #151515;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .skills ul li {
+    margin-bottom: 8px;
+  }
+  .headline {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #915eff;
+    margin-bottom: 10px;
+  }
+  .portfolio-section {
+    margin-top: 40px;
+  }
+  .portfolio-section h3 {
+    font-size: 1.8rem;
+    color: #00ccff;
+    margin-bottom: 15px;
+  }
+  .contact form input,
+  .contact form textarea {
+    width: 100%;
+    padding: 10px;
+    background: #1e1e1e;
+    border: none;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+  .links ul li a {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .links ul li a:hover {
+    color: #ffd700;
+    text-decoration: underline;
+    transform: scale(1.05);
+  }
+  .copy-btn {
+    background: transparent;
+    border: none;
+    color: #00ffff;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+  }
+  .copy-btn:hover {
+    color: gold;
+  }
+  .contact form button {
+    background: #915eff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .cs-text {
+    color: #00BFFF;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+  .cs-text {
+  margin-top: 1em;
+}
+  .intro-note {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .note-text {
+    color: #f1f0f0;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+  }
+  footer {
+    background: #111;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  /* === Skills Section Styling === */
+  #skills {
+  max-width: 600px; /* تحديد عرض طبيعي مثل القديم */
+  margin: 40px auto; /* يوسّطه في الصفحة */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: all 0.3s ease;
+  font-size: 20px;
+}
+
+#skills h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  border-left: 5px solid #915eff;
+  padding-left: 15px;
+}
+
+#skills .headline {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #915eff;
+  margin-bottom: 10px;
+}
+
+#skills ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#skills ul li {
+  margin: 8px 0;
+  padding-left: 28px;
+  position: relative;
+  line-height: 1.8;
+}
+
+#skills ul li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00ff99;
+  font-size: 18px;
+}
+
+</style>
+
+</head>
+<body>
+  <div id="binary-container"></div>
+  <img src="fun-robot.png" alt="robot" class="robot" id="robot">
+  <nav>
+    <div><strong><span style="color: gold; text-shadow: 0 0 5px gold">Eng/ Mohamed Ramy</span></strong></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#portfolio">Fields of Expertise</a>
+      <a href="#skills">Skills</a>
+      <a href="#links">Links</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <img src="elostora.png" alt="Mohamed Ramy">
+    <h1>👑 Welcome to ELOSTORA’s Portfolio 🦅</h1>
+    <p class="cs-text">I am a Computer Science Student 💻</p>
+<br>
+    <div class="intro-note">
+      📝 <span class="note-text">
+        This page showcases how far I've come in my journey. I continuously update it with everything new I learn.
+      </span>
+    </div>
+  </header>
+
+  <section class="about" id="about">
+    <h2>👤 About Me :</h2>
+    <p>I'm Mohamed Ramy, known as ELOSTORA 👑 — a passionate Software Engineer with hands-on experience in C# Console Applications and efficient C++ development.</p>
+    <p>Currently studying Computer Science at the Higher Institute of Computer Science in Fifth Settlement.</p>
+    <p>Engaged in ECPC training, competitive programming, and enrolled in the ALX Backend Web Dev program.</p>
+    <p>Exploring cybersecurity with Security+ and CCNA. Active on TryHackMe and Hack The Box, using penetration tools for hands-on learning.</p>
+    <p>Completed ALX Freelancing. Open for freelance work, internships, and cybersecurity/backend projects.</p>
+  </section>
+
+  <section class="portfolio" id="portfolio">
+  <h2>🌟 Fields of Expertise :</h2>
+
+    <div class="portfolio-section">
+      <h3>🖥️ Software Engineering</h3>
+      <div class="project">
+        <h4>C# Console Shop System</h4>
+        <p>Object-oriented shopping system in C# with login, cart, and order functionality.</p>
+      </div>
+      <div class="project">
+        <h4>C++ Problem-Solving</h4>
+        <p>Collection of competitive coding problems in C++.</p>
+      </div>
+      <div class="project">
+        <h4>Django Web App</h4>
+        <p>Authentication & database integration with full-stack structure.</p>
+      </div>
+    </div>
+
+    <div class="portfolio-section">
+      <h3>🛡️ CyberSecurity</h3>
+      <div class="project">
+        <h4>Security+ Fundamentals</h4>
+        <p>Studying key security principles and defense strategies.</p>
+      </div>
+      <div class="project">
+        <h4>TryHackMe / Hack The Box</h4>
+        <p>Hands-on hacking labs & CTF platforms to develop offensive security skills.</p>
+      </div>
+      <div class="project">
+        <h4>Penetration Testing Tools</h4>
+        <p>Using ethical hacking tools for reconnaissance, exploitation, and reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2>🧠 Skills :</h2>
+    <div class="headline">Django - .NET - Node js - Cybersecurity </div>
+    <ul>
+      <li>Freelancing Skills (ALX)</li>
+      <li>C++ / C# / Python / html</li>
+      <li>OOP · Competitive Programming</li>
+      <li>The Master of Problem Solving</li>
+      <li>Backend APIs / Git</li>
+      <li>Linux / Bash / Terminal</li>
+      <li>Security+ / CCNA (In Progress)</li>
+      <li>TryHackMe / HTB</li>
+    </ul>
+  </section>
+
+<section class="links" id="links">
+  <h2>🔗 Links :</h2>
+  <ul style="list-style: none; padding-left: 0; font-size: 20px;">
+    <li style="margin-bottom: 15px;">
+      💼 <a href="https://www.linkedin.com/in/mohamed-ramy-9bb484365/" target="_blank">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+    </li>
+    <li>
+      💻 <a href="https://github.com/1Mohamed-Ramy1" target="_blank">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </li>
+  </ul>
+</section>
+
+
+  <section class="contact" id="contact">
+    <h2>📞 Contact :</h2>
+    <form>
+      <input type="text" placeholder="Mo7amed Ramy" />
+      <input type="email" placeholder="EXAMPLE@gmail.com" />
+      <input type="text" placeholder="015..012..011..010" />
+      <textarea rows="5">Feel free to reach out for freelance work, cybersecurity collaborations, or backend development.</textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    Made with 💻 by ELOSTORA | Mohamed Ramy © 2025
+  </footer>
+
+<script>
+  const binaryContainer = document.getElementById("binary-container");
+  for (let i = 0; i < 200; i++) {
+    const bin = document.createElement("div");
+    bin.classList.add("binary");
+    bin.style.left = `${Math.random() * 100}%`;
+    bin.style.top = `${Math.random() * 100}vh`;
+    bin.innerText = Math.random() > 0.5 ? "0" : "1";
+    bin.style.animationDuration = `${5 + Math.random() * 5}s`;
+    binaryContainer.appendChild(bin);
+  }
+
+  const robot = document.getElementById("robot");
+  const hint = document.createElement("div");
+  hint.innerText = "Click me...";
+  hint.style.position = "fixed";
+  hint.style.bottom = "65px";
+  hint.style.right = "15px";
+  hint.style.background = "#222";
+  hint.style.color = "#fff";
+  hint.style.padding = "5px 10px";
+  hint.style.borderRadius = "8px";
+  hint.style.fontSize = "0.9rem";
+  hint.style.boxShadow = "0 0 5px #ffd700";
+  hint.style.transition = "opacity 0.3s ease";
+  hint.style.opacity = "1";
+  hint.style.zIndex = "999";
+  document.body.appendChild(hint);
+  const message = document.createElement("div");
+  message.innerText = "TO BE THE BEST... YOU NEED TO DO THE BEST!";
+  message.style.position = "fixed";
+  message.style.bottom = "80px";
+  message.style.right = "70px";
+  message.style.background = "#111";
+  message.style.color = "#00ffcc";
+  message.style.padding = "10px 15px";
+  message.style.borderRadius = "10px";
+  message.style.boxShadow = "0 0 10px #00ffcc";
+  message.style.fontWeight = "bold";
+  message.style.zIndex = "1000";
+  message.style.transition = "opacity 0.3s ease";
+  message.style.opacity = "0";
+  document.body.appendChild(message);
+  window.addEventListener("scroll", () => {
+    robot.style.bottom = `${10 + window.scrollY * 0.05}px`;
+    hint.style.bottom = `${65 + window.scrollY * 0.05}px`;
+    message.style.bottom = `${80 + window.scrollY * 0.05}px`;
+  });
+  robot.addEventListener("click", () => {
+    hint.style.opacity = "0";
+    message.style.opacity = "1";
+  });
+</script>
+</body>
+</html>
