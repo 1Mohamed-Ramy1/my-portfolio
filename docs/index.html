@@ -377,15 +377,15 @@
 
 
   <section class="contact" id="contact">
-    <h2>📞 Contact :</h2>
-    <form>
-      <input type="text" placeholder="Mo7amed Ramy" />
-      <input type="email" placeholder="EXAMPLE@gmail.com" />
-      <input type="text" placeholder="015..012..011..010" />
-      <textarea rows="5">Feel free to reach out for freelance work, cybersecurity collaborations, or backend development.</textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+  <h2>📞 Contact :</h2>
+  <form action="https://formsubmit.co/mohamedramysocial@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Mo7amed Ramy" />
+    <input type="email" name="email" placeholder="EXAMPLE@gmail.com" />
+    <input type="text" name="phone" placeholder="015..012..011..010" />
+    <textarea name="message" rows="5">Feel free to reach out for freelance work, cybersecurity collaborations, or backend development.</textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
 
   <footer>
     Made with 💻 by ELOSTORA | Mohamed Ramy © 2025
@@ -404,6 +404,8 @@
   }
 
   const robot = document.getElementById("robot");
+
+  // Hint (Click me...)
   const hint = document.createElement("div");
   hint.innerText = "Click me...";
   hint.style.position = "fixed";
@@ -419,6 +421,8 @@
   hint.style.opacity = "1";
   hint.style.zIndex = "999";
   document.body.appendChild(hint);
+
+  // Message
   const message = document.createElement("div");
   message.innerText = "TO BE THE BEST... YOU NEED TO DO THE BEST!";
   message.style.position = "fixed";
@@ -434,14 +438,25 @@
   message.style.transition = "opacity 0.3s ease";
   message.style.opacity = "0";
   document.body.appendChild(message);
+
+  // Toggle system
+  let showMessage = false;
+  robot.addEventListener("click", () => {
+    showMessage = !showMessage;
+    if (showMessage) {
+      hint.style.opacity = "0";
+      message.style.opacity = "1";
+    } else {
+      hint.style.opacity = "1";
+      message.style.opacity = "0";
+    }
+  });
+
+  // Responsive with scroll
   window.addEventListener("scroll", () => {
     robot.style.bottom = `${10 + window.scrollY * 0.05}px`;
     hint.style.bottom = `${65 + window.scrollY * 0.05}px`;
     message.style.bottom = `${80 + window.scrollY * 0.05}px`;
-  });
-  robot.addEventListener("click", () => {
-    hint.style.opacity = "0";
-    message.style.opacity = "1";
   });
 </script>
 </body>
